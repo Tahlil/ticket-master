@@ -3,6 +3,7 @@ import { UiLayout } from '@/components/ui/ui-layout';
 import { ClusterProvider } from '@/components/cluster/cluster-data-access';
 import { SolanaProvider } from '@/components/solana/solana-provider';
 import { Provider } from './provider';
+import { GeistSans } from 'geist/font/sans';
 
 export const metadata = {
   title: 'ticket-master',
@@ -15,15 +16,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <Provider>
+    <html lang="en" className={GeistSans.className}>
+      <body className='bg-red-900 text-white'>
+        {/* <Provider>
           <ClusterProvider>
-            <SolanaProvider>
-              <UiLayout>{children}</UiLayout>
-            </SolanaProvider>
+            <SolanaProvider> */}
+        {/* <UiLayout> */}
+        {children}
+        {/* </UiLayout> */}
+        {/* </SolanaProvider>
           </ClusterProvider>
-        </Provider>
+        </Provider> */}
       </body>
     </html>
   );

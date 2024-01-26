@@ -8,21 +8,21 @@
   "ignorePatterns": ["!**/*", ".next/**/*"],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "files": [""],
       "rules": {
         "@next/next/no-html-link-for-pages": ["error", "web/pages"]
       }
     },
     {
-      "files": ["*.ts", "*.tsx"],
+      "files": [""],
       "rules": {}
     },
     {
-      "files": ["*.js", "*.jsx"],
+      "files": [""],
       "rules": {}
     },
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "files": [""],
       "rules": {
         "@nx/enforce-module-boundaries": [
           "error",
