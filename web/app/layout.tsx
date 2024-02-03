@@ -19,16 +19,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={GeistSans.className}>
       <body className=' text-white'>
-        {/* <Provider>
+        <Provider>
           <ClusterProvider>
-            <SolanaProvider> */}
-        {/* <UiLayout> */}
-        
-        {children}
-        {/* </UiLayout> */}
-        {/* </SolanaProvider>
+            <SolanaProvider>
+              <UiLayout>
+                {children}
+              </UiLayout>
+            </SolanaProvider>
           </ClusterProvider>
-        </Provider> */}
+        </Provider>
       </body>
     </html>
   );

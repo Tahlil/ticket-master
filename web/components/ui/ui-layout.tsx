@@ -16,8 +16,9 @@ import {
 import toast, { Toaster } from 'react-hot-toast';
 
 const pages: { label: string; path: string }[] = [
-  { label: 'Account', path: '/account' },
-  { label: 'Clusters', path: '/clusters' },
+  { label: 'Login', path: '/login' },
+  { label: 'Schedule', path: '/schedule' },
+  { label: 'Ticket', path: '/event' },
 ];
 
 export function UiLayout({ children }: { children: ReactNode }) {
@@ -25,14 +26,10 @@ export function UiLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="h-full flex flex-col">
-      <div className="navbar bg-base-300 text-neutral-content flex-col md:flex-row space-y-2 md:space-y-0">
+      <div className="navbar bg-red-200 text-black flex-col md:flex-row space-y-2 md:space-y-0">
         <div className="flex-1">
           <Link className="btn btn-ghost normal-case text-xl" href="/">
-            <img
-              className="h-4 md:h-6"
-              alt="Solana Logo"
-              src="/solana-logo.png"
-            />
+            Ticket Master
           </Link>
           <ul className="menu menu-horizontal px-1 space-x-2">
             {pages.map(({ label, path }) => (

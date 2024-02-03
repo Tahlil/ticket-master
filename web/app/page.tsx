@@ -7,7 +7,7 @@ export default function Page() {
   return (
     <div className="flex flex-col bg-gradient-to-br from-red-300 to-red-900">
       <div className="flex flex-col h-screen ">
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="flex h-full">
           <div className="flex h-full items-center px-32">
             <img src="/hero.png" alt="kpop" />
