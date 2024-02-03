@@ -18,12 +18,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={GeistSans.className}>
-      <body className='bg-red-900 text-white'>
+      <body className=' text-white'>
         {/* <Provider>
           <ClusterProvider>
             <SolanaProvider> */}
         {/* <UiLayout> */}
-        <Navbar />
+        
         {children}
         {/* </UiLayout> */}
         {/* </SolanaProvider>

@@ -5,8 +5,8 @@ import Navbar from '@/components/navbar/Navbar';
 
 export default function Page() {
   return (
-    <div className="flex flex-col">
-      <div className="flex flex-col h-screen">
+    <div className="flex flex-col bg-gradient-to-br from-red-300 to-red-900">
+      <div className="flex flex-col h-screen ">
         <Navbar />
         <div className="flex h-full">
           <div className="flex h-full items-center px-32">
@@ -30,7 +30,6 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <div></div>
     </div>
   );
 }
