@@ -50,15 +50,32 @@ export default function GetTicket() {
     const getTicket = async () => {
       console.log('buying ticket...');
       console.log(publicKey?.toString());
-  
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userAddress: publicKey?.toString() })
+    };
+    const response = await fetch('http://localhost:3001/mint-ticket', requestOptions);
+    const data = await response.json();
+
       toast.custom(
         <div className="bg-stone-200 border text-red-600 p-4 rounded-lg">
-          Bought NFT Ticket
+          Bought NFT Ticket 
+          <div>
+          <a
+            href={`${data.url}`}
+            target="_blank"
+            className="underline p-1"
+          >
+            {" "}
+            TX Link{" "}
+          </a>
+          </div>
         </div>
       );
-      await timeout(3000);
+      await timeout(5000);
   
-      // router.push('/');
+      router.push('/');
     };
     const filterEvents = () => {
       return events.filter((event: { date: string; location: string }) => {
@@ -124,7 +141,7 @@ export default function GetTicket() {
 
     return (
         <div className="flex flex-col items-center bg-gradient-to-br from-red-300 to-red-900 min-h-screen p-6">
-                  <Toaster
+                  {/* <Toaster
                     toastOptions={{
                       className: '',
                       style: {
@@ -133,7 +150,7 @@ export default function GetTicket() {
                         color: '#713200',
                       },
                     }}
-                  />
+                  /> */}
                   <h4 className="text-2xl font-bold text-white mb-8 pt-16">
                     Upcoming Events
                   </h4>
