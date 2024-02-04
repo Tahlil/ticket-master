@@ -5,6 +5,10 @@ import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { CalendarIcon } from '@radix-ui/react-icons';
 import { format } from 'date-fns';
+import { UiLayout } from '@/components/ui/ui-layout';
+import { ClusterProvider } from '@/components/cluster/cluster-data-access';
+import { SolanaProvider } from '@/components/solana/solana-provider';
+import { Provider } from '../provider';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -82,128 +86,145 @@ export default function Page() {
   }, [router]);
 
   return (
-    <div>
-      <Navbar />
+    <Provider>
+      <ClusterProvider>
+        <SolanaProvider>
+          <UiLayout>
+            <div className="flex flex-col bg-gradient-to-br from-red-300 to-red-900">
+              <div className="flex flex-col h-screen w-screen">
+                {/* <Navbar /> */}
 
-      <div className="h-screen flex items-center justify-center">
-        <div className="w-full md:w-1/2 lg:w-1/3  px-6 py-12 space-y-8 text-foreground">
-          <p className="text-2xl uppercase">Create a new event</p>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-              <FormField
-                control={form.control}
-                name="eventName"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input
-                        placeholder="Event Name"
-                        id="eventName"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="eventDes"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input
-                        placeholder="Event Description"
-                        id="eventDes"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="eventLocation"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input
-                        placeholder="Event Location"
-                        id="eventLocation"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="eventDate"
-                render={({ field }) => (
-                  <FormItem className="flex flex-col">
-                    <FormLabel
-                      htmlFor="eventDate"
-                      className="text-muted-foreground"
-                    >
-                      Event Date
-                    </FormLabel>
-                    <Popover>
-                      <PopoverTrigger asChild>
-                        <FormControl>
-                          <Button
-                            variant={'outline'}
-                            className={cn(
-                              'w-[240px] pl-3 text-left font-normal',
-                              !field.value &&
-                                'text-foreground hover:text-muted-foreground font-medium'
-                            )}
-                          >
-                            {field.value ? (
-                              format(field.value, 'PPP')
-                            ) : (
-                              <span>Pick a date</span>
-                            )}
-                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                          </Button>
-                        </FormControl>
-                      </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0" align="start">
-                        <Calendar
-                          mode="single"
-                          selected={field.value}
-                          onSelect={field.onChange}
-                          disabled={(date) =>
-                            date <= new Date() || date < new Date('1900-01-01')
-                          }
-                          initialFocus
+                <div className="h-screen flex items-center justify-center">
+                  <div className="w-full md:w-1/2 lg:w-1/3  px-6 py-12 space-y-8 text-foreground">
+                    <p className="text-2xl uppercase">Create a new event</p>
+                    <Form {...form}>
+                      <form
+                        onSubmit={form.handleSubmit(onSubmit)}
+                        className="space-y-8"
+                      >
+                        <FormField
+                          control={form.control}
+                          name="eventName"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormControl>
+                                <Input
+                                  placeholder="Event Name"
+                                  id="eventName"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
                         />
-                      </PopoverContent>
-                    </Popover>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button
-                variant="outline"
-                type="submit"
-                className="w-full font-semibold uppercase hover:text-muted-foreground"
-              >
-                Create Event
-              </Button>
-            </form>
-          </Form>
-          {showConfirmation && (
-            <Popup
-              message={`Are you sure you want to register the event?`}
-              onConfirm={handleConfirm}
-              onCancel={handleCancel}
-            />
-          )}
-        </div>
-      </div>
-    </div>
+
+                        <FormField
+                          control={form.control}
+                          name="eventDes"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormControl>
+                                <Input
+                                  placeholder="Event Description"
+                                  id="eventDes"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="eventLocation"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormControl>
+                                <Input
+                                  placeholder="Event Location"
+                                  id="eventLocation"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="eventDate"
+                          render={({ field }) => (
+                            <FormItem className="flex flex-col">
+                              <FormLabel
+                                htmlFor="eventDate"
+                                className="text-muted-foreground"
+                              >
+                                Event Date
+                              </FormLabel>
+                              <Popover>
+                                <PopoverTrigger asChild>
+                                  <FormControl>
+                                    <Button
+                                      variant={'outline'}
+                                      className={cn(
+                                        'w-[240px] pl-3 text-left font-normal',
+                                        !field.value &&
+                                          'text-foreground hover:text-muted-foreground font-medium'
+                                      )}
+                                    >
+                                      {field.value ? (
+                                        format(field.value, 'PPP')
+                                      ) : (
+                                        <span>Pick a date</span>
+                                      )}
+                                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                                    </Button>
+                                  </FormControl>
+                                </PopoverTrigger>
+                                <PopoverContent
+                                  className="w-auto p-0"
+                                  align="start"
+                                >
+                                  <Calendar
+                                    mode="single"
+                                    selected={field.value}
+                                    onSelect={field.onChange}
+                                    disabled={(date) =>
+                                      date <= new Date() ||
+                                      date < new Date('1900-01-01')
+                                    }
+                                    initialFocus
+                                  />
+                                </PopoverContent>
+                              </Popover>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <Button
+                          variant="outline"
+                          type="submit"
+                          className="w-full font-semibold uppercase hover:text-muted-foreground"
+                        >
+                          Create Event
+                        </Button>
+                      </form>
+                    </Form>
+                    {showConfirmation && (
+                      <Popup
+                        message={`Are you sure you want to register the event?`}
+                        onConfirm={handleConfirm}
+                        onCancel={handleCancel}
+                      />
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </UiLayout>
+        </SolanaProvider>
+      </ClusterProvider>
+    </Provider>
   );
 }

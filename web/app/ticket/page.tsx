@@ -2,8 +2,12 @@
 'use client';
 import './ticket.css';
 import React, { useState, useEffect } from 'react';
-import Navbar from "../../components/navbar/Navbar";
+import Navbar from '../../components/navbar/Navbar';
 import Link from 'next/link';
+import { UiLayout } from '@/components/ui/ui-layout';
+import { ClusterProvider } from '@/components/cluster/cluster-data-access';
+import { SolanaProvider } from '@/components/solana/solana-provider';
+import { Provider } from '../provider';
 
 type Event = {
   id: number;
@@ -35,7 +39,6 @@ const events: Event[] = [
 ];
 
 const Ticket: React.FC = () => {
-
   type TicketData = {
     id: string;
     eventTitle: string;
@@ -55,49 +58,64 @@ const Ticket: React.FC = () => {
       eventLocation: 'Music Hall',
       userIdentifier: 'user123',
       imageUrl: '/eras.jpeg',
-
     },
     // Add more ticket data as needed
   ]);
 
-
   return (
-    <div className="flex flex-col items-center bg-gradient-to-br from-red-300 to-red-900 min-h-screen p-6">
-            <Navbar />
-
-      <h4 className="text-2xl font-bold text-white mb-8 pt-16">
-        Your Tickets
-      </h4>     
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {tickets.map((ticket: TicketData) => (
-          <div key= {ticket.id}
-            className="relative border-2 border-red-300 rounded-lg shadow-md overflow-hidden"
-          >
-            <div className="w-full h-56 overflow-hidden">
-              <img
-                className="w-full h-full object-cover rounded-t-lg"
-                src={ticket.imageUrl}
-                alt={ticket.eventTitle}
-              />
+    <Provider>
+      <ClusterProvider>
+        <SolanaProvider>
+          <UiLayout>
+            <div className="flex flex-col bg-gradient-to-br from-red-300 to-red-900">
+              <div className="flex flex-col h-screen w-screen">
+                <div className="flex flex-col items-center bg-gradient-to-br from-red-300 to-red-900 min-h-screen p-6">
+                  <h4 className="text-2xl font-bold text-white mb-8 pt-16">
+                    Your Tickets
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    {tickets.map((ticket: TicketData) => (
+                      <div
+                        key={ticket.id}
+                        className="relative border-2 border-red-300 rounded-lg shadow-md overflow-hidden"
+                      >
+                        <div className="w-full h-56 overflow-hidden">
+                          <img
+                            className="w-full h-full object-cover rounded-t-lg"
+                            src={ticket.imageUrl}
+                            alt={ticket.eventTitle}
+                          />
+                        </div>
+                        <div className="p-6 flex flex-col justify-end">
+                          <h3 className="text-3xl font-bold text-white mb-2">
+                            {ticket.eventTitle}
+                          </h3>
+                          <p className="text-lg text-gray-300">
+                            Date: {ticket.eventDate}
+                          </p>
+                          <p className="text-lg text-gray-300">
+                            Time: {ticket.eventTime}
+                          </p>
+                          <p className="text-lg text-gray-300">
+                            Location: {ticket.eventLocation}
+                          </p>
+                          <Link
+                            href={`/verify`}
+                            className="bg-red-500 hover:bg-red-600 text-white justify-center flex px-6 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 mt-4"
+                          >
+                            Check in
+                          </Link>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="p-6 flex flex-col justify-end">
-              <h3 className="text-3xl font-bold text-white mb-2">
-                {ticket.eventTitle}
-              </h3>
-              <p className="text-lg text-gray-300">Date: {ticket.eventDate}</p>
-              <p className="text-lg text-gray-300">Time: {ticket.eventTime}</p>
-              <p className="text-lg text-gray-300">
-                Location: {ticket.eventLocation}
-              </p>
-              <Link href={`/verify`} className="bg-red-500 hover:bg-red-600 text-white justify-center flex px-6 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 mt-4">
-                Check in
-              </Link>
-            </div>
-          </div>
-        ))}
-      </div>
-
-    </div>
+          </UiLayout>
+        </SolanaProvider>
+      </ClusterProvider>
+    </Provider>
   );
 };
 
