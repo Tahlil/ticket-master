@@ -10,7 +10,7 @@ export default function Navbar({}: Props) {
       <div className='flex gap-8 items-center'>
         <Link href='/schedule'  className='border-b-2 border-transparent hover:border-white'>Schedule</Link>
         <Link href='/ticket' className='border-b-2 border-transparent hover:border-white'>Ticket</Link>
-        <Link href='/login' className='border border-white px-8 py-2 rounded-full hover:bg-white hover:text-red-700'>Login</Link>
+        {/* <Link href='/login' className='border border-white px-8 py-2 rounded-full hover:bg-white hover:text-red-700'>Login</Link> */}
       </div>
     </div>
   )
