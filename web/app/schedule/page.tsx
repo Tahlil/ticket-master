@@ -17,11 +17,11 @@ type Event = {
 const events: Event[] = [
   {
     id: 1,
-    title: 'Event 1',
-    date: '2022-01-01',
-    time: '10:00 AM',
-    location: 'Venue 1',
-    imageUrl: '/event1.jpg',
+    title: 'Eras Tour Concert',
+    date: '2024-02-10',
+    time: '8:00 PM',
+    location: 'Music Hall',
+    imageUrl: '/eras.jpeg',
   },
   {
     id: 2,

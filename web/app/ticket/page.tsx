@@ -3,6 +3,7 @@
 import './ticket.css';
 import React, { useState, useEffect } from 'react';
 import Navbar from "../../components/navbar/Navbar";
+import Link from 'next/link';
 
 type Event = {
   id: number;
@@ -48,12 +49,12 @@ const Ticket: React.FC = () => {
   const [tickets] = useState<TicketData[]>([
     {
       id: '1',
-      eventTitle: 'Concert',
+      eventTitle: 'Eras Tour Concert',
       eventDate: '2024-02-10',
       eventTime: '8:00 PM',
       eventLocation: 'Music Hall',
       userIdentifier: 'user123',
-      imageUrl: '/event1.jpg',
+      imageUrl: '/eras.jpeg',
 
     },
     // Add more ticket data as needed
@@ -88,6 +89,9 @@ const Ticket: React.FC = () => {
               <p className="text-lg text-gray-300">
                 Location: {ticket.eventLocation}
               </p>
+              <Link href={`/verify`} className="bg-red-500 hover:bg-red-600 text-white justify-center flex px-6 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105 mt-4">
+                Check in
+              </Link>
             </div>
           </div>
         ))}
