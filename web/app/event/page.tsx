@@ -22,7 +22,11 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { cn } from '@/lib/utils'
 import { Calendar } from '@/components/ui/calendar'
 import Navbar from "../../components/navbar/Navbar";
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation'; // Import useRouter from Next.js
 
+import Popup from '../../components/ui/PopupProps';
+import '../../components/styles/popup.css';
 
 const formSchema = z.object({
   eventName: z.string().min(2, {
@@ -43,9 +47,30 @@ export default function Page() {
     resolver: zodResolver(formSchema),
   })
 
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
-    console.log(data)
-  }
+
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
+  const onSubmit = () => {
+    setShowConfirmation(true);
+  };
+
+  const handleConfirm = () => {
+    setShowConfirmation(false);
+    router.push('/'); // Use router to navigate back to the home page
+  };
+
+  const handleCancel = () => {
+    setShowConfirmation(false);
+  };
+
+  // Initialize useRouter hook
+  const router = useRouter();
+
+  // Use useEffect to ensure router is initialized before accessing it
+  useEffect(() => {
+    if (!router) return;
+  }, [router]);
+
 
   return (
     <div>
@@ -123,6 +148,13 @@ export default function Page() {
             <Button variant="outline" type="submit" className="w-full font-semibold uppercase hover:text-muted-foreground">Create Event</Button>
           </form>
         </Form>
+        {showConfirmation && (
+        <Popup
+          message={`Are you sure you want to register the event?`}
+          onConfirm={handleConfirm}
+          onCancel={handleCancel}
+        />
+      )}
       </div>
     </div>
     </div>
