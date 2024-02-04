@@ -1,0 +1,11 @@
+Wallet connection -> which wallet connected? 
+For one hardcoded wallet -> User functionality
+For one hardcoded wallet -> event creator functionality
+Generic task:
+- Navbar
+User functionality tasks
+- After purchase ticket pop up and then redirect to home page
+- Ticket page -> purchased ticket
+- New page navbar -> check in event/ verify NFT -> check in button -> scan QR with camera
+Event creator tasks
+- Create event page -> after event creator popup (maybe use toaster) and redirect to home page
