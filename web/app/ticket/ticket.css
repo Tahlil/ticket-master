@@ -1,0 +1,41 @@
+.ticket {
+  border: 2px solid #f87171; /* Border color */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  overflow: hidden; /* Hide overflow content */
+}
+
+.ticket > .w-full {
+  height: 200px; /* Image height */
+  object-fit: cover; /* Maintain aspect ratio */
+}
+
+.ticket .p-6 {
+  background-color: #f87171; /* Background color */
+}
+
+.ticket h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff; /* Text color */
+  margin-bottom: 10px;
+}
+
+.ticket p {
+  color: #fff; /* Text color */
+  margin-bottom: 8px;
+}
+
+.ticket a {
+  background-color: #f87171; /* Button background color */
+  color: #fff; /* Button text color */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Make it a block-level element */
+  padding: 10px 20px; /* Button padding */
+  border-radius: 999px; /* Round button shape */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.ticket a:hover {
+  background-color: #fa5252; /* Hover background color */
+}

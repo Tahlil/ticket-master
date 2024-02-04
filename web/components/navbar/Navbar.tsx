@@ -1,17 +1,30 @@
-import Link from 'next/link'
-import React from 'react'
+import Link from 'next/link';
 
-type Props = {}
+const pages = [
+  { label: 'Events', path: '/schedule' },
+  { label: "Your Tickets", path:"/ticket"},
+  { label: 'Verify Ownership', path: '/verify' },
+  { label: 'Register Your Event Now!', path: '/event' }
+];
 
-export default function Navbar({}: Props) {
+export default function Navbar() {
   return (
-    <div className='fixed top-0 flex w-full justify-between px-32 py-8'>
-      <div className='flex font-bold text-2xl items-center text-red-900 tracking-[1.5px]'>Ticket Master</div>
-      <div className='flex gap-8 items-center'>
-        <Link href='/schedule'  className='border-b-2 border-transparent hover:border-white'>Schedule</Link>
-        <Link href='/ticket' className='border-b-2 border-transparent hover:border-white'>Ticket</Link>
-        {/* <Link href='/login' className='border border-white px-8 py-2 rounded-full hover:bg-white hover:text-red-700'>Login</Link> */}
+    <div className="navbar bg-red-200 text-black flex-col md:flex-row space-y-2 md:space-y-0">
+      <div className="flex-1">
+        <Link className="btn btn-ghost normal-case text-xl" href="/">
+          {/* Your logo or site name */}
+        </Link>
+        <ul className="menu menu-horizontal px-1 space-x-2">
+          {pages.map(({ label, path }) => (
+            <li key={path}>
+              <Link href={path}>
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
+      {/* Additional components/buttons */}
     </div>
-  )
+  );
 }

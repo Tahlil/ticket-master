@@ -21,6 +21,8 @@ import { Input } from "@/components/ui/input"
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
 import { Calendar } from '@/components/ui/calendar'
+import Navbar from "../../components/navbar/Navbar";
+
 
 const formSchema = z.object({
   eventName: z.string().min(2, {
@@ -46,7 +48,11 @@ export default function Page() {
   }
 
   return (
+    <div>
+                    <Navbar />
+
     <div className='h-screen flex items-center justify-center'>
+
       <div className="w-full md:w-1/2 lg:w-1/3  px-6 py-12 space-y-8 text-foreground">
         <p className='text-2xl uppercase'>Create a new event</p>
         <Form {...form}>
@@ -118,6 +124,7 @@ export default function Page() {
           </form>
         </Form>
       </div>
+    </div>
     </div>
   )
 }

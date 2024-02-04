@@ -6,6 +6,7 @@ import { ReactNode, Suspense, useEffect, useRef } from 'react';
 import Image from 'next/image'
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Navbar from "../navbar/Navbar"
 
 import { AccountChecker } from '../account/account-ui';
 import {
@@ -14,12 +15,6 @@ import {
   ExplorerLink,
 } from '../cluster/cluster-ui';
 import toast, { Toaster } from 'react-hot-toast';
-
-const pages: { label: string; path: string }[] = [
-  // { label: 'Login', path: '/login' },
-  { label: 'Schedule', path: '/schedule' },
-  { label: 'Ticket', path: '/event' },
-];
 
 export function UiLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -36,18 +31,7 @@ export function UiLayout({ children }: { children: ReactNode }) {
       height={500}
     />
           </Link>
-          <ul className="menu menu-horizontal px-1 space-x-2">
-            {pages.map(({ label, path }) => (
-              <li key={path}>
-                <Link
-                  className={pathname.startsWith(path) ? 'active' : ''}
-                  href={path}
-                >
-                  {label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <Navbar />
         </div>
         <div className="flex-none space-x-2">
           <WalletButton />

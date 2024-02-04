@@ -2,6 +2,8 @@
 'use client';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
+import Navbar from "../../components/navbar/Navbar";
+
 
 type Event = {
   id: number;
@@ -104,6 +106,8 @@ const Schedule: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center bg-gradient-to-br from-red-300 to-red-900 min-h-screen p-6">
+                  <Navbar />
+
       <h4 className="text-2xl font-bold text-white mb-8 pt-16">
         Upcoming Events
       </h4>
