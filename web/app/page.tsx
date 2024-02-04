@@ -5,9 +5,12 @@ import { UiLayout } from '@/components/ui/ui-layout';
 import { ClusterProvider } from '@/components/cluster/cluster-data-access';
 import { SolanaProvider } from '@/components/solana/solana-provider';
 import { Provider } from './provider';
+import Home from '@/components/home'
+
 // import { Button } from '@daisyui/react';
 
 export default function Page() {
+
   return (
     <Provider>
       <ClusterProvider>
@@ -27,14 +30,18 @@ export default function Page() {
                       Look no further! Our SBS The Show Tickets are the simplest way for
                       you to experience a live Kpop recording.
                     </p>
-                    <div className="flex justify-center items-center py-6 px-3 space-x-4">
+                    <div className='m-3'>
+                    <Home></Home>
+                    </div>
+                   
+                    {/* <div className="flex justify-center items-center py-6 px-3 space-x-4">
                       <button className="bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full border border-red-700">
                         Get ticket
                       </button>
                       <button className="rounded-full bg-transparent hover:bg-red-500 text-white-700 font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent">
                         Create Event
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
