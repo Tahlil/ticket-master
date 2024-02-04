@@ -21,12 +21,6 @@ import { Input } from "@/components/ui/input"
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
 import { Calendar } from '@/components/ui/calendar'
-import Navbar from "../../components/navbar/Navbar";
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation'; // Import useRouter from Next.js
-
-import Popup from '../../components/ui/PopupProps';
-import '../../components/styles/popup.css';
 
 const formSchema = z.object({
   eventName: z.string().min(2, {
@@ -34,6 +28,7 @@ const formSchema = z.object({
   }).max(100, {
     message: "Event name must be less than 100 characters long",
   }),
+  eventDes: z.string(),
   eventDate: z.date(),
   eventLocation: z.string().min(2, {
     message: "First name must be at least 2 characters long",
@@ -47,37 +42,12 @@ export default function Page() {
     resolver: zodResolver(formSchema),
   })
 
-
-  const [showConfirmation, setShowConfirmation] = useState(false);
-
-  const onSubmit = () => {
-    setShowConfirmation(true);
-  };
-
-  const handleConfirm = () => {
-    setShowConfirmation(false);
-    router.push('/'); // Use router to navigate back to the home page
-  };
-
-  const handleCancel = () => {
-    setShowConfirmation(false);
-  };
-
-  // Initialize useRouter hook
-  const router = useRouter();
-
-  // Use useEffect to ensure router is initialized before accessing it
-  useEffect(() => {
-    if (!router) return;
-  }, [router]);
-
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    console.log(data)
+  }
 
   return (
-    <div>
-                    <Navbar />
-
     <div className='h-screen flex items-center justify-center'>
-
       <div className="w-full md:w-1/2 lg:w-1/3  px-6 py-12 space-y-8 text-foreground">
         <p className='text-2xl uppercase'>Create a new event</p>
         <Form {...form}>
@@ -93,6 +63,19 @@ export default function Page() {
                   <FormMessage />
                 </FormItem>
               )} />
+
+            <FormField
+              control={form.control}
+              name="eventDes"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input placeholder="Event Description" id="eventDes" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )} />
+
             <FormField
               control={form.control}
               name="eventLocation"
@@ -135,7 +118,7 @@ export default function Page() {
                         selected={field.value}
                         onSelect={field.onChange}
                         disabled={(date) =>
-                          date > new Date() || date < new Date("1900-01-01")
+                          date <= new Date() || date < new Date("1900-01-01")
                         }
                         initialFocus
                       />
@@ -148,15 +131,7 @@ export default function Page() {
             <Button variant="outline" type="submit" className="w-full font-semibold uppercase hover:text-muted-foreground">Create Event</Button>
           </form>
         </Form>
-        {showConfirmation && (
-        <Popup
-          message={`Are you sure you want to register the event?`}
-          onConfirm={handleConfirm}
-          onCancel={handleCancel}
-        />
-      )}
       </div>
-    </div>
     </div>
   )
 }
