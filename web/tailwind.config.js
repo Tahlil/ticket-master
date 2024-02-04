@@ -74,10 +74,37 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "text-slide-7": {
+          "0%, 11.43%": {
+            transform: "translateY(0%)",
+          },
+          "14.28%, 25.71%": {
+            transform: "translateY(-12.5%)",
+          },
+          "28.57%, 40%": {
+            transform: "translateY(-25%)",
+          },
+          "42.85%, 54.28%": {
+            transform: "translateY(-37.5%)",
+          },
+          "57.14%, 68.57%": {
+            transform: "translateY(-50%)",
+          },
+          "71.42%, 82.85%": {
+            transform: "translateY(-62.5%)",
+          },
+          "85.71%, 97.14%": {
+            transform: "translateY(-75%)",
+          },
+          "100%": {
+            transform: "translateY(-87.5%)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "text-slide-7": "text-slide-7 17.5s cubic-bezier(0.83, 0, 0.17, 1) infinite",
       },
     },
   },

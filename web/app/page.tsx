@@ -20,10 +20,37 @@ export default function Page() {
               <div className="flex flex-col h-screen ">
                 {/* <Navbar /> */}
                 <div className="flex h-full">
+                  
                   <div className="flex h-full items-center px-32">
                     <img src="/hero.png" alt="kpop" />
                   </div>
-                  <div className="flex flex-col h-full justify-center pr-32">
+                  <div className="flex flex-col h-full justify-center pr-12">
+                 
+
+                  <div className="font-extrabold text-3xl md:text-4xl [text-wrap:balance] bg-clip-text text-transparent bg-gradient-to-r from-slate-50 to-50% to-slate-1 p-11">
+                  <img src="/logo.png" alt="kpop" width={330} height={330} />
+               Secure your ticket in a heartbeat for
+               <span className="text-pink-800 inline-flex flex-col h-[calc(theme(fontSize.3xl)*theme(lineHeight.tight))] md:h-[calc(theme(fontSize.4xl)*theme(lineHeight.tight))] overflow-hidden">
+                 <ul className="block animate-text-slide-7 text-center leading-tight [&_li]:block">
+                   <li>Concerts</li>
+                   <li>Sports Games</li>
+                   <li>Cultural Festivals</li>
+                   <li>Conferences</li>
+                   <li>Theater Shows</li>
+                   <li>Movie Premieres</li>
+                   <li>Art Exhibitions</li>
+                   <li>Comedy Nights</li>
+                   <li>Workshops</li>
+                   <li>Food Festivals</li>
+                   <li>Tech Conferences</li>
+                   <li>Outdoor Adventures</li>
+                   <li>Fundraising Galas</li>
+                   <li>Fashion Shows</li>
+                   <li>Charity Event</li>
+                   <li aria-hidden="true">Educational Seminars</li>
+                 </ul>
+               </span>
+             </div>
                     <p className="uppercase text-4xl font-bold">SBS MTV The KPOP</p>
                     <p className="uppercase text-4xl font-bold">show ticket package</p>
                     <p className="text-pretty pt-4">
