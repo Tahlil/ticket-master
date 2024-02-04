@@ -3,7 +3,7 @@
 import { WalletButton } from '../solana/solana-provider';
 import * as React from 'react';
 import { ReactNode, Suspense, useEffect, useRef } from 'react';
-
+import Image from 'next/image'
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -29,7 +29,12 @@ export function UiLayout({ children }: { children: ReactNode }) {
       <div className="navbar bg-red-200 text-black flex-col md:flex-row space-y-2 md:space-y-0">
         <div className="flex-1">
           <Link className="btn btn-ghost normal-case text-xl" href="/">
-            Ticket Master
+          <Image
+          src="/logo.png"
+      alt="Picture of the author"
+      width={50}
+      height={500}
+    />
           </Link>
           <ul className="menu menu-horizontal px-1 space-x-2">
             {pages.map(({ label, path }) => (
