@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
 const pages = [
+  { label: 'Home', path: '/' },
   { label: 'Events', path: '/schedule' },
   { label: "Your Tickets", path:"/ticket"},
-  { label: 'Verify Ownership', path: '/verify' },
   { label: 'Register Your Event Now!', path: '/event' }
 ];
 
